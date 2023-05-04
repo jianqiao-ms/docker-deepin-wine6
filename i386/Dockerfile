@@ -6,7 +6,7 @@ COPY stable /usr/share/debootstrap/scripts/stable
 COPY deepin-archive-keyring.gpg /usr/share/keyrings/deepin-archive-keyring.gpg
 COPY deepin-pools-keyring.gpg /root/deepin-pools-keyring.gpg
 RUN apt-get update && apt-get install -y debootstrap && \
-    debootstrap --variant=minbase --no-check-gpg --arch=i386 stable rootfs http://packages.deepin.com/deepin/ && \
+    debootstrap --variant=minbase --no-check-gpg --arch=i386 deepin.multistrap rootfs http://packages.deepin.com/deepin/ && \
     cp /usr/share/keyrings/deepin-archive-keyring.gpg rootfs/etc/apt/trusted.gpg.d/ && \
     cp /root/deepin-pools-keyring.gpg rootfs/etc/apt/trusted.gpg.d/ && \
     chroot ./rootfs apt-get autoclean && \
